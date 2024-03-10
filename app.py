@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from database import load_jobs_from_db, load_job_from_db
 
 app = Flask(__name__)
@@ -52,6 +52,15 @@ def show_job(id):
 def api_job(id):
     job = load_job_from_db(id)
     return jsonify(job)
+
+@app.route("/job/<id>/apply")
+def apply_to_job(id):
+    data = request.args
+    # Store to DB
+    # Send an email
+    # display acknowledgement
+    return jsonify(data)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True) # '0.0.0.0' is used to run local and debug to True for running continuously
