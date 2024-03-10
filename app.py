@@ -1,5 +1,8 @@
 from flask import Flask, render_template, jsonify, request
-from database import load_jobs_from_db, load_job_from_db
+from database import (load_jobs_from_db, 
+                      load_job_from_db, 
+                      add_application_to_db
+                      )
 
 app = Flask(__name__)
 
@@ -53,13 +56,21 @@ def api_job(id):
     job = load_job_from_db(id)
     return jsonify(job)
 
-@app.route("/job/<id>/apply")
+@app.route("/job/<id>/apply", methods=["post"])
 def apply_to_job(id):
-    data = request.args
+    data = request.form #request.args -> used for collecting data without post method
+    print("here is the data:", data)
+    job = load_job_from_db(id)
+
+    add_application_to_db(job_id=id, data=data)
     # Store to DB
     # Send an email
     # display acknowledgement
-    return jsonify(data)
+    return render_template('acknowledgement.html', 
+                           application=data, 
+                           company_name="Jovian",
+                           job=job
+                           )
 
 
 if __name__ == "__main__":
