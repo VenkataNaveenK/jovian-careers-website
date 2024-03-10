@@ -31,3 +31,14 @@ CREATE TABLE applications (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
+
+* Add validations before submitting
+* Send email to admin and candiate using mailjet.com
+* Add Captcha to your website using hcaptcha.com
+* Provide api of job postings
+* Create api for reading application data
+
+Future work:
+* Create admin login interface to check submitted applications
+* Allow admins to mark applications as accepted/rejected
+* Create a user login interface to check application status
