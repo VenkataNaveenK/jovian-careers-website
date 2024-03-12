@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jovian Careers</title>
+        {% include 'bootstrap.html' %}
+    </head>
+    <body>
+        {% include 'nav.html' %}
+        {% include 'banner.html' %}
+        <div class="container">
+            <h4 class="mt-4 mb-3" style="text-align: center;">Add Job</h4>
+            <form action="/jobs/add/acknowledgement" method="post">
+                <div class="mb-3 col-6">
+                    <label class="form-label">Job Title</label>
+                    <input type="text" class="form-control" required name="title">
+                </div>
+                <div class="mb-3 col-6">
+                    <label class="form-label">Location</label>
+                    <input type="text" class="form-control" required name="location">
+                </div>
+                <div class="mb-3 col-6">
+                    <label class="form-label">Salary</label>
+                    <input type="number" class="form-control" name="salary">
+                </div>
+                <div class="mb-3 col-2">
+                    <label class="form-label">currency</label>
+                    <input type="text" class="form-control" name="currency">
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" name="responsibilities" id="floatingTextarea2" style="height: 150px"></textarea>
+                    <label for="floatingTextarea2">Responsibilities</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" name="requirements" id="floatingTextarea2" style="height: 150px"></textarea>
+                    <label for="floatingTextarea2">Requirements</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        {% include 'footer.html' %}
+    </body>
+</html>

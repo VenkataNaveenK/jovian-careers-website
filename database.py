@@ -15,6 +15,12 @@ engine = create_engine(db_connection_string,
                     #  }
                     )
 
+def add_job_to_db(data):
+    with engine.connect() as conn:
+        result = conn.execute(text(f"INSERT INTO jobs (title, location, salary, currency, responsibilities, requirements) VALUES ('{data['title']}', '{data['location']}', {data['salary']}, '{data['currency']}', '{data['responsibilities']}', '{data['requirements']}')"))
+        
+        conn.commit()
+
 def load_jobs_from_db():
     with engine.connect() as conn:
         result = conn.execute(text("select * from jobs"))
